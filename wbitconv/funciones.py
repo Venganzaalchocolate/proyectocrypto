@@ -86,9 +86,12 @@ def bitcoins(dic):
         return tot 
 
 def euros(dic):
-    for clave, valor in dic.items():
-        if clave == 'EUR':
-            return valor 
+    if dic != {}:
+        for clave, valor in dic.items():
+            if clave == 'EUR':
+                return valor
+    else:
+        return 0 
         
 def criptos(dic, key):
     for clave, valor in dic.items():

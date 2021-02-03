@@ -1,2 +1,2 @@
 SECRET_KEY='unaclavesecreta'
-DBFILE='ruta_de_base_de_datos.db'
+DBFILE='wbitconv/data/nombre_de_tu_basededatos.db'

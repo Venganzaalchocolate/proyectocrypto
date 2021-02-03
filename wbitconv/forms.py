@@ -23,7 +23,7 @@ class FormMovimientos(FlaskForm):
     monedafromoculto= HiddenField()
     monedato = SelectField('A', choices=monedas, validators=[DataRequired()])
     monedatooculto= HiddenField()
-    cantidadfrom = FloatField('Cantidad', validators=[DataRequired(), NumberRange(min=0.1, max=1000000, message='cantidad mínima: 0,1, cantidad máxima: 1000000')])
+    cantidadfrom = FloatField('Cantidad', validators=[DataRequired(), NumberRange(min=0.00001, max=1000000, message='cantidad mínima: 0,1, cantidad máxima: 1000000')])
     cantidadfromoculto = HiddenField()
     cantidadto = HiddenField ()
     preciounitario = HiddenField ()

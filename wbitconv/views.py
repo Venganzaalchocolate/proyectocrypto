@@ -122,20 +122,20 @@ def total():
     except Exception as e:
         print("**ERROR**🔧: Acceso a base de datos - totales: {} - {}". format(type(e).__name__, e))
         mensajes.append("Error en acceso a base de datos. Consulte con el administrador.")
-        return render_template("estado.html", mensajes=mensajes, valoractual= '0', eurosinvertidos= 0, ganancias= 0) 
+        return render_template("estado.html", mensajes=mensajes, valoractual=0, eurosinvertidos= 0, ganancias= 0) 
     
     totales=funciones.totales(dic)
     try:
-        bitcoins = funciones.bitcoins(funciones.totales(dic)) 
+        bitcoins = funciones.bitcoins(funciones.totales(dic))
+         
     except Exception as e:
         print("**ERROR**🔧: Acceso a API - bitcoins: {} - {}". format(type(e).__name__, e))
         mensajes.append("Error en acceso a Api. Consulte con el administrador o inténtelo más tarde.")
         return render_template("estado.html", mensajes=mensajes, valoractual=0, eurosinvertidos= 0, ganancias= 0)
-        
+    
     euros = funciones.euros(funciones.totales(dic))
     eurosinvertidos = funciones.eurosinvertidos(dic)
     valoractual = bitcoins + euros + eurosinvertidos
-    ganancias= valoractual - eurosinvertidos
-
+    ganancias= round(valoractual - eurosinvertidos, 5)
     return render_template("estado.html", valoractual = valoractual, eurosinvertidos=eurosinvertidos, ganancias=ganancias, title="Todos los movimientos")  
         
