@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+    {% block title %} Movimientos {% endblock %}
+    {% block content %}
+    <div>
+        <div>
+            {% for mensaje in mensajes%}
+                <h1 class="err-msg">{{ mensajes}}</h1>
+            {% endfor %}
+        </div>
+        <div><p>Euros invertidos: {{ eurosinvertidos }}</p></div>
+        <div><p>Valor actual de la inversión: {{ valoractual }}</p></div>
+        <div><p>Ganancias hasta la fecha: {{ ganancias }}</p></div>
+    </div>
+    {% endblock %}

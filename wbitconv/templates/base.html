@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/estilos.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Imbue:wght@300&display=swap" rel="stylesheet"> 
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <div id='fondo' img src="../static/fondo.jpg">
+        <nav>
+            <ul class="menu"> 
+                <li class="item"><a href="/">Home</a></li>
+                <li class="item"><a href="/purchase">Invertir</a></li>
+                <li class="item"><a href="/status">Estado</a></li>
+            </ul>
+        </nav>
+        <div>
+            <h1 class='titulo'>{% block titulin %}{% endblock %}</h1>
+        </div>
+        <section>
+            {% block content %} {% endblock %}
+        </section>
+    </div>
+</body>
+
+</html>

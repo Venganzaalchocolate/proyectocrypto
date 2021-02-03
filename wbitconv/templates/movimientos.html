@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+    {% block title %} Movimientos {% endblock %}
+    {% block titulin %} Movimientos {% endblock %}
+    {% block content %}
+    <div>
+        {% for mensaje in mensajes%}
+            <h1 class="err-msg">{{ mensajes}}</h1>
+        {% endfor %}
+    </div>
+    <div>
+        {% if datos|length > 0 %}
+        <table>
+            <tr>
+                <th class="fecha">Fecha</th>
+                <th class="hora">Hora</th>
+                <th class="monedafrom">From</th>
+                <th class="cantidadfrom">Q</th>
+                <th class="monedato">To</th>
+                <th class="cantidadto">Q</th>
+                <th class="pu">P.U</th>
+            </tr>
+        {% for registro in datos %}
+            <tr>
+                <td class="par">{{ registro['fecha'] }}</td>
+                <td class="par">{{ registro['hora'] }}</td>
+                <td class="par">{{ registro['monedafrom'] }}</td>
+                <td class="par">{{ registro['cantidadfrom'] }}</td>
+                <td class="par">{{ registro['monedato'] }}</td>
+                <td class="par">{{ registro['cantidadto'] }}</td>
+                <td class="par">{{ registro['pu'] }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        <p>No hay movimientos. crea el tuyo</p>
+        {% endif %}
+    </div>
+    {% endblock %}

@@ -1,0 +1,7 @@
+venv/
+.env
+__pycache__/
+wbitconver/__pycache__
+.vscode/
+wbitconv/data/basededatos.db.
+config.py
