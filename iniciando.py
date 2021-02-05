@@ -4,7 +4,6 @@ import os
 
 
 def nom():
-    # os.mkdir('wbitconv\data')
     clave=input('¿Que clave te gustaría poner?')  
     ndatos=nombrebase()
     archivo = open('config.py', 'w')
