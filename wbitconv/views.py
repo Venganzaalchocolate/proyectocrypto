@@ -10,7 +10,7 @@ DBFILE = app.config['DBFILE']
 def movimientos(): # Función que llama a la plantilla movimientos y los muestra en pantalla
     mensajes=[]
     try:
-        ingresos = funciones.enchufe('SELECT fecha, hora, monedafrom, cantidadfrom, monedato, cantidadto, pu, id FROM movimientos;') #Llamamos a la función enchufe para que haga la consulta
+        ingresos = funciones.enchufe('SELECT fecha, hora, monedafrom, cantidadfrom, monedato, cantidadto, pu, id FROM movimientos ORDER BY id DESC;') #Llamamos a la función enchufe para que haga la consulta
         return render_template("movimientos.html", datos=ingresos, title="Todos los movimientos") #Devolvemos la consulta con su template, dandole a jinja los datos necesarios.
     
     except Exception as e:
@@ -37,6 +37,7 @@ def transaccion():# creamos la funcion transacción que servirá para: compra, v
     
     try:
         monedasDisponibles = funciones.listaMonedas(funciones.totales(funciones.enchufe('SELECT monedafrom, cantidadfrom, monedato, cantidadto, id FROM movimientos;')))
+        monedasDisponibles.sort()
         # monedasDisponibles es una lista de monedas de la base de datos, para ello he realizado una consulta con funciones.enchufe(SELECT..) y después he procesado la inf con una función para extraer los datos y que se muestren de una forma correcta. 
     except Exception as e:
         print("**ERROR**🔧: Acceso a base de datos - monedasDiscponibles: {} - {}". format(type(e).__name__, e))
@@ -74,7 +75,7 @@ def transaccion():# creamos la funcion transacción que servirá para: compra, v
                         form.monedafromoculto.data = form.monedafrom.data
                         form.monedatooculto.data = form.monedato.data
                         form.cantidadfromoculto.data = form.cantidadfrom.data
-                        form.preciounitario.data = round(form.cantidadto.data /  form.cantidadfrom.data, 5)
+                        form.preciounitario.data = '{} {}/{}'.format(round(form.cantidadfrom.data / form.cantidadto.data, 5), form.monedafrom.data, form.monedato.data)
     
                         return render_template("invertir.html", oculto=True, form=form )
                     

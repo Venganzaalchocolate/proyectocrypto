@@ -5,7 +5,7 @@
     {% block content %}
     <div>
         {% for mensaje in mensajes%}
-            <h1 class="err-msg">{{ mensajes}}</h1>
+            <h1 class="err-msg">{{ mensaje}}</h1>
         {% endfor %}
     </div>
     <div>
@@ -33,7 +33,7 @@
         {% endfor %}
         </table>
         {% else %}
-        <p>No hay movimientos. crea el tuyo</p>
+            <p>No hay movimientos. Crea el tuyo</p>
         {% endif %}
     </div>
     {% endblock %}

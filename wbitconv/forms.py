@@ -16,20 +16,21 @@ def ValidandoIguales(form, field):
         raise ValidationError('Las monedas no deben ser iguales')
 
 
-monedas=('EUR', 'ETH', 'LTC', 'BNB', 'EOS', 'XLM', 'TRX', 'BTC', 'XRP', 'BCH', 'USDT', 'BSV', 'ADA')
+monedas=['EUR', 'ETH', 'LTC', 'BNB', 'EOS', 'XLM', 'TRX', 'BTC', 'XRP', 'BCH', 'USDT', 'BSV', 'ADA']
+monedas.sort()
 
 class FormMovimientos(FlaskForm):
-    monedafrom = SelectField('Invertir en', validators=[DataRequired(), ValidandoIguales])
+    monedafrom = SelectField('Con', validators=[DataRequired(), ValidandoIguales])
     monedafromoculto= HiddenField()
-    monedato = SelectField('A', choices=monedas, validators=[DataRequired()])
+    monedato = SelectField('Comprar', choices=monedas, validators=[DataRequired()])
     monedatooculto= HiddenField()
     cantidadfrom = FloatField('Cantidad', validators=[DataRequired(), NumberRange(min=0.00001, max=1000000, message='cantidad mínima: 0,1, cantidad máxima: 1000000')])
     cantidadfromoculto = HiddenField()
     cantidadto = HiddenField ()
     preciounitario = HiddenField ()
     
-    insertar = SubmitField('Invertir')
-    calc =SubmitField('Calcular')
+    insertar = SubmitField('INVERTIR')
+    calc =SubmitField('CALCULAR')
     
 
     

@@ -43,7 +43,7 @@ ul {
     padding: 0%;
   }
 
-li , .boton{
+li , .boton, .boton2, .estado {
     border-style: solid;
     border-width: thin;
     border-color: rgb(216, 166, 31);
@@ -100,19 +100,28 @@ th, td {
  }
 
 
-.boton {
+.boton, .boton2{
     margin: 1em;
+    margin-bottom: 3em;
     display: inline-block;
-    background-color: rgba(107, 8, 165, 0.6);
+    background-color: rgba(255, 217, 0, 0.6);
+    margin-left: 44%;
 
 }
+
+.boton2{
+    margin-left: 45%;
+    background:rgba(255, 155, 25, 0.6);
+    border-color: rgba(255, 155, 25, 0.6);
+}
+
 
 
 .oculto{
     width:15%;
 }
 
-select{
+select, #cantidadfrom{
     color:white;
     background-color: rgb(110, 60, 27);
     width: 100%;
@@ -136,4 +145,32 @@ form {
 
 }
 
+.err-msg{
+    color: rgb(216, 74, 31);
+    border-style: solid;
+    border-width: thin;
+    border-color:  rgb(216, 74, 31);
+    border-radius: 1em;
+    padding: 1em;
+    text-align: center;
+}
 
+.invertir, .estado {
+    background:rgba(255, 155, 25, 0.6);
+    border-radius: 1em;
+    margin-top: 2 em;
+    padding: 0.05em;
+    text-align: center;
+    display: block;
+}
+
+p{
+    color: rgb(255, 255, 255);
+    font-size: 15pt;
+    font-family: 'Source Code Pro', monospace;
+    padding: 0%;
+}
+
+.estado {
+    background: transparent;
+}

@@ -5,7 +5,7 @@
     {% block content %}
         <div>
             {% for mensaje in mensajes%}
-                <h1 class="err-msg">{{ mensajes}}</h1>
+                <h1 class="err-msg">{{ mensaje}}</h1>
             {% endfor %}
             {% for error in form.monedafrom.errors %}
                 <h1 class="err-msg">{{ error }} </h1>
@@ -19,6 +19,12 @@
         {{ form.hidden_tag() }}
         <div class="grid">
             <div class="form">
+                <label for="Cantidad">
+                    {{ form.cantidadfrom.label}}
+                    {{ form.cantidadfrom(placeholder='Escribe un número') }}
+                </label>
+            </div>
+            <div class="form">
                 <label for="monedafrom">
                     {{ form.monedafrom.label}}
                     {{ form.monedafrom(placeholder=form.monedafrom.errors)}}
@@ -31,41 +37,27 @@
                     {{ form.monedato()}}
                 </label>
             </div>
-            <div class="form">
-                <label for="Cantidad">
-                    {{ form.cantidadfrom.label}}
-                    {{ form.cantidadfrom(placeholder='Escribe un número') }}
-                </label>
-            </div>
         </div>
-        <table>    
-            <tr >
-            {% if oculto == True %}
-                <tr>
-                    <th class="monedafrom">From</th>
-                    <th class="cantidadfrom">Q</th>
-                    <th class="monedato">To</th>
-                    <th class="cantidadto">Q</th>
-                    <th class="conversion">P.U</th>
-                </tr>
-                <td class='tabla'>{{ form.monedafromoculto.data }}</td>
-                <td class='tabla'>{{ form.monedatooculto.data}}</td>
-                <td class='tabla'>{{ form.cantidadfromoculto.data}}</td>
-                <td class='tabla'>{{ form.cantidadto.data }}</td>
-                <td class='tabla'>{{ form.preciounitario.data }}</td>
-            {% endif %}
-        </tr>
-        </table>
+        <div class="boton">
+            {{ form.calc }}
+        </div> 
+
+        {% if oculto == True %}
+            <div class="invertir"> 
+                <p>RESUMEN DE LA OPERACIÓN</p>
+                <p>Comprar {{ form.cantidadto.data }} {{ form.monedatooculto.data}} con {{ form.cantidadfromoculto.data}} {{ form.monedafromoculto.data }}</p>
+                <p>A un precio unitario de {{ form.preciounitario.data }}</p>
+            </div>
+        {% endif %}
+        
 
         <div class='b'>
             {% if oculto==True %}
-            <div class="boton">
+            <div class="boton2">
                 {{ form.insertar }}
             </div>
             {% endif %} 
-            <div class="boton">
-                {{ form.calc }}
-            </div>  
+
         </div> 
         
 
