@@ -31,7 +31,10 @@
         En Linux(ubuntu):
                 python3 get-pip.py
         En Windows:
-                python3 get-pip.py
+                # Descarga PIP desde la página oficial en este enlace: 
+                        https://bootstrap.pypa.io/get-pip.py
+                # Escribe en el terminal:
+                        python3 get-pip.py
 
 # Obtención de Api
         Debes obtener una clave api en https://pro.coinmarketcap.com/
