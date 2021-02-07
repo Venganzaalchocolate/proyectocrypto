@@ -27,7 +27,7 @@
                         # Activamos el ambiente virtual
                                 virtual_env\Scripts\activate
 
-# (opcional )Instalar Gestor Paquetes de Python PIP en Ubuntu Linux
+# Instalar Gestor Paquetes de Python PIP
         En Linux(ubuntu):
                 python3 get-pip.py
         En Windows:
@@ -39,7 +39,13 @@
 # Obtención de Api
         Debes obtener una clave api en https://pro.coinmarketcap.com/
 # Instalación de dependencias
-        pip install -r requirements.txt
-        python iniciando.py
+        # Situate dentro del repositorio
+                pip install -r requirements.txt
+                python iniciando.py
 
 # Ejecuta programa
+        # Situate dentro del repositorio
+                python run.py
+        
+        # Abre cualquier navegador web y escribe la url que aparece en la última linea que aparece en el cmd
+        Por defecto es:  http://127.0.0.1:5000/

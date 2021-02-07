@@ -75,7 +75,7 @@ def transaccion():# creamos la funcion transacción que servirá para: compra, v
                         form.monedafromoculto.data = form.monedafrom.data
                         form.monedatooculto.data = form.monedato.data
                         form.cantidadfromoculto.data = form.cantidadfrom.data
-                        form.preciounitario.data = '{} {}/{}'.format(round(form.cantidadfrom.data / form.cantidadto.data, 5), form.monedafrom.data, form.monedato.data)
+                        form.preciounitario.data = '{} {}/{}'.format((form.cantidadfrom.data / form.cantidadto.data), form.monedafrom.data, form.monedato.data)
     
                         return render_template("invertir.html", oculto=True, form=form )
                     
@@ -125,7 +125,6 @@ def total():
         mensajes.append("Error en acceso a base de datos. Consulte con el administrador.")
         return render_template("estado.html", mensajes=mensajes, valoractual=0, eurosinvertidos= 0, ganancias= 0) 
     
-    totales=funciones.totales(dic)
     try:
         bitcoins = funciones.bitcoins(funciones.totales(dic))
          
@@ -135,8 +134,8 @@ def total():
         return render_template("estado.html", mensajes=mensajes, valoractual=0, eurosinvertidos= 0, ganancias= 0)
     
     euros = funciones.euros(funciones.totales(dic))
-    eurosinvertidos = funciones.eurosinvertidos(dic)
-    valoractual = bitcoins + euros + eurosinvertidos
+    eurosinvertidos = round(funciones.eurosinvertidos(dic),5)
+    valoractual = round(bitcoins + euros + eurosinvertidos,5)
     ganancias= round(valoractual - eurosinvertidos, 5)
     return render_template("estado.html", valoractual = valoractual, eurosinvertidos=eurosinvertidos, ganancias=ganancias, title="Todos los movimientos")  
         
