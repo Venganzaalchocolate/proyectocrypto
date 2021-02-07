@@ -1,6 +1,9 @@
+from wbitconv import app
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import json
+
+APIKEY=app.config['APIKEY']
 
 def convertir(monedaFrom, monedaTo, cantidad):
     
@@ -14,7 +17,7 @@ def convertir(monedaFrom, monedaTo, cantidad):
     
     headers = {
     'Accepts': 'application/json',
-    'X-CMC_PRO_API_KEY': '7be0ed35-dc84-4ccd-8eb4-5875ae66cb93',
+    'X-CMC_PRO_API_KEY': '{}'.format(APIKEY),
     }
     
     session = Session()

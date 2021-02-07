@@ -6,9 +6,11 @@ import os
 def nom():
     clave=input('¿Que clave te gustaría poner?')  
     ndatos=nombrebase()
+    apikey=input('Escribe tu clave API ')  
     archivo = open('config.py', 'w')
     archivo.write('SECRET_KEY="{}"'.format(clave))
     archivo.write("\nDBFILE='wbitconv/data/{}.db'".format(ndatos))
+    archivo.write('\nAPIKEY="{}"'.format(apikey))
     archivo.close()
     
     return ndatos
@@ -34,5 +36,7 @@ def sql_connection(ndatos):
         print(Error)
 
 if __name__ == "__main__":
+    os.mkdir('wbitconv\data')
     sql_connection(nom())
+    
 
